@@ -1,6 +1,7 @@
 {
     "cSpell.words": [
         "alreadyliked",
+        "devsocial",
         "fieldofstudy",
         "githubusername",
         "nopostfound",
@@ -11,5 +12,6 @@
         "notliked",
         "postnotfound",
         "youtube"
-    ]
+    ],
+    "git.ignoreLimitWarning": true
 }
