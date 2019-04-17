@@ -60,7 +60,7 @@ const ProfileSchema = new Schema({
         type: Boolean,
         default: false
       },
-      discription: {
+      description: {
         type: String
       }
     }
@@ -71,7 +71,7 @@ const ProfileSchema = new Schema({
         type: String,
         required: true
       },
-      dagree: {
+      degree: {
         type: String,
         required: true
       },
@@ -90,7 +90,7 @@ const ProfileSchema = new Schema({
         type: Boolean,
         default: false
       },
-      discription: {
+      description: {
         type: String
       }
     }
