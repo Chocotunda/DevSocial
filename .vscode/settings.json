@@ -13,6 +13,7 @@
         "notauthorized",
         "notliked",
         "postnotfound",
+        "proptypes",
         "youtube"
     ],
     "git.ignoreLimitWarning": true
