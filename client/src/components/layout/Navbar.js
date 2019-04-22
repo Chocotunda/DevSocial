@@ -5,10 +5,10 @@ import { connect } from 'react-redux';
 import { logoutUser } from '../../actions/authActions';
 
 class Navbar extends Component {
-  onLogoutClick = (event) => {
+  onLogoutClick = event => {
     event.preventDefault();
     this.props.logoutUser();
-  }
+  };
 
   render() {
     const { isAuthenticated, user } = this.props.auth;
@@ -16,7 +16,16 @@ class Navbar extends Component {
     const authLinks = (
       <ul className="navbar-nav ml-auto">
         <li className="nav-item">
-          <a href="" onClick={this.onLogoutClick} className="nav" />
+          <a href="" onClick={this.onLogoutClick} className="nav-link">
+            <img
+              className="rounded-circle"
+              src={user.avatar}
+              alt={user.name}
+              style={{ width: '25px', height: '25px', marginRight: '5px' }}
+              title="You must have a Gravatar connected to your email to display an image"
+            />
+            Logout
+          </a>
         </li>
       </ul>
     );
@@ -68,7 +77,7 @@ class Navbar extends Component {
   }
 }
 
-Navbar.proptypes = {
+Navbar.propTypes = {
   logoutUser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired
 };
