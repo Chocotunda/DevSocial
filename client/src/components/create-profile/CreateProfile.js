@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import TextFieldGroup from '../common/TextFieldGroup';
 import TextAreaFieldGroup from '../common/TextAreaFieldGroup';
-import SelectListGroup from '../common/SelectListGroup';
 import InputGroup from '../common/InputGroup';
+import SelectListGroup from '../common/SelectListGroup';
+import { createProfile } from '../../actions/profileActions';
 
 class CreateProfile extends Component {
   constructor(props) {
@@ -26,21 +28,46 @@ class CreateProfile extends Component {
       instagram: '',
       errors: {}
     };
+
+    this.onChange = this.onChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.errors) {
+      this.setState({ errors: nextProps.errors });
+    }
+  }
+
   onSubmit = event => {
     event.preventDefault();
 
-    console.log('submit');
+    const profileData = {
+      handle: this.state.handle,
+      company: this.state.company,
+      website: this.state.website,
+      location: this.state.location,
+      status: this.state.status,
+      skills: this.state.skills,
+      githubusername: this.state.githubusername,
+      bio: this.state.bio,
+      twitter: this.state.twitter,
+      facebook: this.state.facebook,
+      linkedin: this.state.linkedin,
+      youtube: this.state.youtube,
+      instagram: this.state.instagram
+    };
+    this.props.createProfile(profileData, this.props.history);
   };
 
-  onSubmit = event => {
+  onChange = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
 
   render() {
     const { errors, displaySocialInputs } = this.state;
 
-    let socialInputs
+    let socialInputs;
 
     if (displaySocialInputs) {
       socialInputs = (
@@ -118,28 +145,28 @@ class CreateProfile extends Component {
               <small className="d-block pb-3">* = required fields</small>
               <form onSubmit={this.onSubmit}>
                 <TextFieldGroup
-                  placeholder="*Profile Handle"
+                  placeholder="* Profile Handle"
                   name="handle"
                   value={this.state.handle}
-                  onChange={this.onchange}
+                  onChange={this.onChange}
                   error={errors.handle}
-                  info="A unique handle for your profile URL. Your full name, company name, nickname, etc."
+                  info="A unique handle for your profile URL. Your full name, company name, nickname"
                 />
                 <SelectListGroup
                   placeholder="Status"
-                  name="Status"
+                  name="status"
                   value={this.state.status}
-                  onChange={this.onchange}
-                  error={errors.status}
+                  onChange={this.onChange}
                   options={options}
+                  error={errors.status}
                   info="Give us an idea of where you are at in your career"
                 />
                 <TextFieldGroup
                   placeholder="Company"
                   name="company"
                   value={this.state.company}
-                  onChange={this.onchange}
-                  error={errors.handle}
+                  onChange={this.onChange}
+                  error={errors.company}
                   info="Could be your own company or one you work for"
                 />
                 <TextFieldGroup
@@ -223,4 +250,7 @@ const mapStateToProps = state => ({
   errors: state.errors
 });
 
-export default connect(mapStateToProps)(CreateProfile);
+export default connect(
+  mapStateToProps,
+  { createProfile }
+)(withRouter(CreateProfile));
