@@ -2,7 +2,7 @@ import React from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 
-const TextAreaFieldGroups = ({
+const TextAreaFieldGroup = ({
   name,
   placeholder,
   value,
@@ -27,7 +27,7 @@ const TextAreaFieldGroups = ({
   );
 };
 
-TextAreaFieldGroups.propTypes = {
+TextAreaFieldGroup.propTypes = {
   name: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
   value: PropTypes.string.isRequired,
@@ -36,4 +36,4 @@ TextAreaFieldGroups.propTypes = {
   onChange: PropTypes.func.isRequired
 };
 
-export default TextAreaFieldGroups;
+export default TextAreaFieldGroup;

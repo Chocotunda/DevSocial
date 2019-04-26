@@ -6,6 +6,7 @@
         "devsocial",
         "fieldofstudy",
         "githubusername",
+        "linkedin",
         "nopostfound",
         "nopostsfound",
         "noprofile",
@@ -14,6 +15,7 @@
         "notliked",
         "postnotfound",
         "proptypes",
+        "repos",
         "youtube"
     ],
     "git.ignoreLimitWarning": true
