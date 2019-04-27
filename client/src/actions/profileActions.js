@@ -35,6 +35,15 @@ export const createProfile = (profileData, history) => dispatch => {
     );
 };
 
+// Add experience
+export const addExperience = (expData,
+history) => dispatch => {
+  axios
+    .post('/api/profile/experience', expData)
+    .then(res => history.push('/dashboard'))
+    .catch(err => dispatch({ type: GET_ERRORS, payload: err.response.data }));
+};
+
 // Delete account & Profile
 export const deleteAccount = () => dispatch => {
   if (window.confirm('Are you sure? This can not be undone!')) {
