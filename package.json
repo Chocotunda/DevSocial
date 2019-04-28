@@ -4,7 +4,7 @@
   "description": "Social network for developers",
   "main": "server.js",
   "engines": {
-    "node": "11.20.0"
+    "node": "10.15.3"
   },
   "scripts": {
     "client-install": "npm install --prefix client",
