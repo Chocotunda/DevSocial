@@ -17,9 +17,9 @@ app.use(bodyParser.json());
 // DB Config
 const db = require('./config/keys').mongoURI;
 
-//Connect to MongoDB
+// Connect to MongoDB
 mongoose
-  .connect(db, { useNewUrlParser: true })
+  .connect(db)
   .then(() => console.log('MongoDB Connected'))
   .catch(err => console.log(err));
 
@@ -36,7 +36,7 @@ app.use('/api/posts', posts);
 
 // Server static assets if in production
 if (process.env.NODE_ENV === 'production') {
-  // Static folder
+  // Set static folder
   app.use(express.static('client/build'));
 
   app.get('*', (req, res) => {
@@ -44,6 +44,6 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
-const PORT = process.env.PORT || 5000;
+const port = process.env.PORT || 5000;
 
-app.listen(PORT, () => console.log(`Server running on port: ${PORT}`));
+app.listen(port, () => console.log(`Server running on port ${port}`));
